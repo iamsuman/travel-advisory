@@ -1,4 +1,4 @@
-# travel-advisory v1
+# travel-advisory v2
 # Usage
 ```
 git clone git@github.com:iamsuman/travel-advisory.git
