@@ -29,7 +29,15 @@ def health():
 @app.route("/diag", methods=["GET"])
 def diag():
     response = response_template
-    response["note"] = "Diag test"
+    response["api_status"]["reply"]["note"] = "Diag test"
+    result_json = {}
+    for country_code in data:
+        result_json[country_code] = {}
+        result_json[country_code]["country_code"] = data[country_code]["iso_alpha2"]
+        result_json[country_code]["name"] = data[country_code]["name"]
+    response["data"] = result_json
+    response["api_status"]["reply"]["count"] = len(result_json)
+
     return jsonify(response)
 
 
