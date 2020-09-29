@@ -18,6 +18,8 @@ class Core:
     def validate_args(self, country_code):
         if country_code.isalpha():
             return "alpha"
+        elif isinstance(country_code, list):
+            return "list"
         else:
             try:
                 # country_code = '{"countryCode":["AU", "AD"]}'
@@ -29,7 +31,7 @@ class Core:
                 sys.exit("Not a valid input, need json format like \'{\"countryCode\":[\"AU\", \"AD\"]}\'")
 
     def load_travel_data(self, file_name):
-        with open("data.json", "r") as json_file:
+        with open(file_name, "r") as json_file:
             country_dict = json.load(json_file)
         data = country_dict["data"]
         return data
