@@ -37,6 +37,7 @@ def diag():
         result_json[country_code]["name"] = data[country_code]["name"]
     response["data"] = result_json
     response["api_status"]["reply"]["count"] = len(result_json)
+    response["api_status"]["request"]["item"] = "diag"
 
     return jsonify(response)
 
@@ -68,6 +69,7 @@ def convert():
             "The api works, but we could not find the item you were looking for."
 
     response["api_status"]["reply"]["code"] = code
+    response["api_status"]["request"]["item"] = input_value
     return jsonify(response)
 
 
