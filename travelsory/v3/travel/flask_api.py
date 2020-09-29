@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from travelsory.v3.travel import lookup
+import lookup
 
 response_template = {
     "api_status": {
@@ -65,5 +65,5 @@ def convert():
 
 if __name__ == "__main__":
     core = lookup.Core()
-    data = core.load_travel_data("data.json")
+    data = core.load_travel_data("./data.json")
     app.run(host='0.0.0.0', port=5000)
